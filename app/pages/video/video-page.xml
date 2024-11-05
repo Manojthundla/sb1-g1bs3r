@@ -1,0 +1,48 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="{{ video.title }}">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout>
+            <!-- Video Player Placeholder -->
+            <Image src="{{ video.thumbnail }}" height="200" stretch="aspectFill" />
+
+            <!-- Video Info -->
+            <StackLayout class="p-4">
+                <Label text="{{ video.title }}" class="text-xl font-bold" textWrap="true" />
+                <StackLayout orientation="horizontal" class="mt-2">
+                    <Label text="{{ video.views, formatViews }}" class="text-gray-500" />
+                    <Label text=" • " class="text-gray-500" />
+                    <Label text="{{ video.timestamp, formatTimeAgo }}" class="text-gray-500" />
+                </StackLayout>
+
+                <!-- Channel Info -->
+                <GridLayout columns="auto, *, auto" class="mt-4">
+                    <Image src="{{ video.channelAvatar }}" width="40" height="40" class="rounded-full" />
+                    <Label text="{{ video.channel }}" col="1" class="text-lg font-semibold ml-2" verticalAlignment="center" />
+                    <Button text="Subscribe" col="2" class="bg-red-600 text-white rounded-full px-4" />
+                </GridLayout>
+
+                <!-- Description -->
+                <Label text="{{ video.description }}" class="mt-4 text-gray-700" textWrap="true" />
+
+                <!-- Comments Section -->
+                <Label text="Comments" class="text-lg font-semibold mt-4 mb-2" />
+                <ListView items="{{ comments }}" height="{{ comments.length * 80 }}" separatorColor="#e5e5e5">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto, *" rows="auto, auto" class="comment-item">
+                            <Image src="{{ userAvatar }}" width="32" height="32" class="rounded-full" rowSpan="2" />
+                            <StackLayout col="1" row="0" orientation="horizontal" class="ml-2">
+                                <Label text="{{ user }}" class="font-semibold" />
+                                <Label text=" • " class="text-gray-500" />
+                                <Label text="{{ timestamp, formatTimeAgo }}" class="text-gray-500" />
+                            </StackLayout>
+                            <Label text="{{ text }}" col="1" row="1" class="ml-2" textWrap="true" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

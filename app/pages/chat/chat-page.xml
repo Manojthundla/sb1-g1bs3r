@@ -1,0 +1,23 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="{{ chatName }}">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <ListView items="{{ messages }}" row="0" separatorColor="transparent">
+            <ListView.itemTemplate>
+                <StackLayout>
+                    <StackLayout class="message-bubble" class="{{ isSent ? 'message-sent' : 'message-received' }}">
+                        <Label text="{{ text }}" textWrap="true" />
+                        <Label text="{{ timestamp, 'HH:mm' }}" class="text-xs text-gray-500" />
+                    </StackLayout>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <GridLayout rows="auto" columns="*, auto" row="1" class="p-2 bg-gray-100">
+            <TextField hint="Type a message" text="{{ newMessage }}" class="bg-white rounded-full px-4 py-2" col="0" />
+            <Button text="Send" tap="{{ onSendMessage }}" class="bg-green-500 text-white rounded-full px-6" col="1" />
+        </GridLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,29 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="YouTube">
+        <ActionItem ios.position="right" android.position="actionBar">
+            <Label text="&#xf002;" class="fas text-white text-lg" />
+        </ActionItem>
+    </ActionBar>
+
+    <ListView items="{{ videos }}" itemTap="onVideoTap" separatorColor="transparent">
+        <ListView.itemTemplate>
+            <GridLayout rows="auto, auto" class="video-item p-2">
+                <GridLayout row="0">
+                    <Image src="{{ thumbnail }}" stretch="aspectFill" height="200" />
+                    <Label text="{{ duration }}" class="duration-badge" horizontalAlignment="right" verticalAlignment="bottom" margin="4" />
+                </GridLayout>
+                <GridLayout row="1" columns="auto, *" rows="auto, auto" class="p-2">
+                    <Image src="{{ channelAvatar }}" width="40" height="40" class="rounded-full" rowSpan="2" />
+                    <Label text="{{ title }}" class="text-lg font-semibold" col="1" row="0" textWrap="true" />
+                    <StackLayout col="1" row="1" orientation="horizontal">
+                        <Label text="{{ channel }}" class="text-gray-500" />
+                        <Label text=" • " class="text-gray-500" />
+                        <Label text="{{ views, formatViews }}" class="text-gray-500" />
+                        <Label text=" • " class="text-gray-500" />
+                        <Label text="{{ timestamp, formatTimeAgo }}" class="text-gray-500" />
+                    </StackLayout>
+                </GridLayout>
+            </GridLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</Page>

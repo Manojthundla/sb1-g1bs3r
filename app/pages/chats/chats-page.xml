@@ -1,0 +1,25 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="WhatsApp">
+        <ActionItem ios.position="right" android.position="actionBar">
+            <Label text="&#xf067;" class="fas text-white text-lg" />
+        </ActionItem>
+        <ActionItem ios.position="right" android.position="actionBar">
+            <Label text="&#xf002;" class="fas text-white text-lg" />
+        </ActionItem>
+    </ActionBar>
+
+    <ListView items="{{ chats }}" itemTap="onChatTap" separatorColor="#e5e5e5">
+        <ListView.itemTemplate>
+            <GridLayout columns="auto, *, auto" rows="auto, auto" class="p-2 chat-item">
+                <Image src="{{ avatar }}" width="50" height="50" class="rounded-full" row="0" rowSpan="2" col="0" />
+                <Label text="{{ name }}" class="text-lg font-semibold" row="0" col="1" />
+                <Label text="{{ lastMessage }}" class="text-gray-500" row="1" col="1" />
+                <StackLayout row="0" col="2" class="text-right">
+                    <Label text="{{ timestamp, 'HH:mm' }}" class="text-xs text-gray-500" />
+                    <Label text="{{ unreadCount }}" class="bg-green-500 text-white text-center rounded-full w-5 h-5" 
+                           visibility="{{ unreadCount > 0 ? 'visible' : 'collapsed' }}" />
+                </StackLayout>
+            </GridLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</Page>

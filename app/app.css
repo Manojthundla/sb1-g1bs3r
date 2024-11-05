@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.video-item {
+    border-bottom-width: 1;
+    border-bottom-color: #e5e5e5;
+}
+
+.duration-badge {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2 4;
+    border-radius: 4;
+    font-size: 12;
+}
+
+ActionBar {
+    background-color: #FF0000;
+    color: white;
+}
+
+.comment-item {
+    border-bottom-width: 1;
+    border-bottom-color: #e5e5e5;
+    padding: 8;
+}
